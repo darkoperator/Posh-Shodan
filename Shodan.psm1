@@ -14,7 +14,7 @@ function Set-ShodanAPIKey
     }
     Process
     {
-        $Global:VTAPIKey = $APIKey
+        $Global:ShodanAPIKey = $APIKey
     }
     End
     {
@@ -41,23 +41,127 @@ function Get-ShodanAPIInfo
     [CmdletBinding()]
     Param
     (
-        # Param1 help description
-        [Parameter(Mandatory=$true)]
-        [string]$APIKey
+        # Shodan developer API key
+        [Parameter(Mandatory=$false)]
+        [string]$APIKey,
+
+        [Parameter(Mandatory=$false)]
+        [string]$CertificateThumbprint
     )
 
     Begin
     {
+        if (!(Test-Path variable:Global:VTAPIKey ) -and !($APIKey))
+        {
+            Write-Error "No VirusTotal API Key has been specified or set."
+        }
+        elseif ((Test-Path variable:Global:VTAPIKey ) -and !($APIKey))
+        {
+            $APIKey = $Global:ShodanAPIKey
+        }
     }
     Process
     {
-        Invoke-RestMethod -Method get -Uri 'http://www.shodanhq.com/api/info' -Body @{'key'=$APIKey}
+        $URI =  'https://api.shodan.io/api-info'
+        if ($CertificateThumbprint)
+        {
+            Invoke-RestMethod -Method get -Uri $URI -Body @{'key'=$APIKey} -CertificateThumbprint $CertificateThumbprint
+        }
+        else
+        {
+            Invoke-RestMethod -Method get -Uri $URI -Body @{'key'=$APIKey}
+        }
     }
     End
     {
     }
 }
 
+
+function Get-ShodanServices
+{
+    [CmdletBinding()]
+    Param
+    (
+        # Shodan developer API key
+        [Parameter(Mandatory=$false)]
+        [string]$APIKey,
+
+        [Parameter(Mandatory=$false)]
+        [string]$CertificateThumbprint
+    )
+
+    Begin
+    {
+        if (!(Test-Path variable:Global:VTAPIKey ) -and !($APIKey))
+        {
+            Write-Error "No VirusTotal API Key has been specified or set."
+        }
+        elseif ((Test-Path variable:Global:VTAPIKey ) -and !($APIKey))
+        {
+            $APIKey = $Global:ShodanAPIKey
+        }
+    }
+    Process
+    {
+        $URI =  'https://api.shodan.io/shodan/services'
+        if ($CertificateThumbprint)
+        {
+            Invoke-RestMethod -Method get -Uri $URI -Body @{'key'=$APIKey} -CertificateThumbprint $CertificateThumbprint
+        }
+        else
+        {
+            Invoke-RestMethod -Method get -Uri $URI -Body @{'key'=$APIKey}
+        }
+    }
+    End
+    {
+    }
+}
+
+function Get-ShodanIPServices
+{
+    [CmdletBinding()]
+    Param
+    (
+        # Shodan developer API key
+        [Parameter(Mandatory=$false)]
+        [string]$APIKey,
+
+        [Parameter(Mandatory=$false)]
+        [string]$IPAddress,
+
+        [Parameter(Mandatory=$false)]
+        [string]$CertificateThumbprint
+    )
+
+    Begin
+    {
+        if (!(Test-Path variable:Global:VTAPIKey ) -and !($APIKey))
+        {
+            Write-Error "No VirusTotal API Key has been specified or set."
+        }
+        elseif ((Test-Path variable:Global:VTAPIKey ) -and !($APIKey))
+        {
+            $APIKey = $Global:ShodanAPIKey
+        }
+    }
+    Process
+    {
+        $URI =  "https://api.shodan.io/shodan/host/$($IPAddress)"
+        if ($CertificateThumbprint)
+        {
+            Invoke-RestMethod -Method get -Uri $URI -Body @{'key'=$APIKey} -CertificateThumbprint $CertificateThumbprint
+        }
+        else
+        {
+            Invoke-RestMethod -Method get -Uri $URI -Body @{'key'=$APIKey}
+        }
+    }
+    End
+    {
+    }
+}
 
 <#
 .Synopsis
@@ -66,7 +170,6 @@ function Get-ShodanAPIInfo
    Search for Exploit Information using Shodan. The information is gathered from several sources.
    The sources that Shodan will search in are:
    - CVE Mitre
-   - OSVDB Open Source Vulnerability Database
    - ExploitDB
    - Metasploit Framework
 
@@ -395,7 +498,7 @@ function Search-ShodanExploitDB
         [string]$Platform,
 
         # Param2 help description
-        [ValidateSet('Local', 'Papers', 'Remote', 'Shellcode', 'WebApps', 'DoS')]
+        [ValidateSet('Local', 'Exploit', 'Papers', 'Remote', 'Shellcode', 'WebApps', 'DoS')]
         [string]$Type,
 
         [Parameter(Mandatory=$false)]
