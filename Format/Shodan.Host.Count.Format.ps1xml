@@ -2,9 +2,9 @@
 <Configuration>
 <ViewDefinitions>
 <View>
-    <Name>Shodan.MSF.Search</Name>
+    <Name>Shodan.Host.Count</Name>
     <ViewSelectedBy>
-        <TypeName>Shodan.MSF.Search</TypeName>
+        <TypeName>Shodan.Host.Count</TypeName>
     </ViewSelectedBy>
     <ListControl>
         <ListEntries>
@@ -15,8 +15,8 @@
                         <PropertyName>total</PropertyName>
                     </ListItem>
                     <ListItem>
-                        <Label>Matches</Label>
-                        <PropertyName>Matches</PropertyName>
+                        <Label>Facets</Label>
+                        <PropertyName>facets</PropertyName>
                     </ListItem>
                     </ListItems>
             </ListEntry>

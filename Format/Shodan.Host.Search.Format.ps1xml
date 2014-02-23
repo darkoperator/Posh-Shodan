@@ -2,9 +2,9 @@
 <Configuration>
 <ViewDefinitions>
 <View>
-    <Name>Shodan.ExploitDB.Search</Name>
+    <Name>Shodan.Host.Search</Name>
     <ViewSelectedBy>
-        <TypeName>Shodan.ExploitDB.Search</TypeName>
+        <TypeName>Shodan.Host.Search</TypeName>
     </ViewSelectedBy>
     <ListControl>
         <ListEntries>
@@ -16,7 +16,11 @@
                     </ListItem>
                     <ListItem>
                         <Label>Matches</Label>
-                        <PropertyName>Matches</PropertyName>
+                        <PropertyName>matches</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Facets</Label>
+                        <PropertyName>facets</PropertyName>
                     </ListItem>
                     </ListItems>
             </ListEntry>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Configuration>
+<ViewDefinitions>
+<View>
+    <Name>Shodan.APIKey.Info</Name>
+    <ViewSelectedBy>
+        <TypeName>Shodan.APIKey.Info</TypeName>
+    </ViewSelectedBy>
+    <ListControl>
+        <ListEntries>
+            <ListEntry>
+                <ListItems>
+                    <ListItem> 
+                        <Label>Unlocked_Left</Label>
+                        <PropertyName>unlocked_left</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Telnet</Label>
+                        <PropertyName>telnet</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Plan</Label>
+                        <PropertyName>plan</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>HTTPS</Label>
+                        <PropertyName>https</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Unlocked</Label>
+                        <PropertyName>unlocked</PropertyName>
+                    </ListItem>
+                    </ListItems>
+            </ListEntry>
+        </ListEntries>
+    </ListControl>
+</View>
+</ViewDefinitions>
+</Configuration>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<Configuration>
+<ViewDefinitions>
+<View>
+    <Name>Shodan.Host.Info</Name>
+    <ViewSelectedBy>
+        <TypeName>Shodan.Host.Info</TypeName>
+    </ViewSelectedBy>
+    <ListControl>
+        <ListEntries>
+            <ListEntry>
+                <ListItems>
+                    <ListItem> 
+                        <Label>IP_Str</Label>
+                        <PropertyName>ip_str</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>IP</Label>
+                        <PropertyName>ip</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Hostnames</Label>
+                        <PropertyName>hostnames</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Ports</Label>
+                        <PropertyName>ports</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>OS</Label>
+                        <PropertyName>os</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Data</Label>
+                        <PropertyName>data</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Longitude</Label>
+                        <PropertyName>longitude</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Latitude</Label>
+                        <PropertyName>latitude</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>City</Label>
+                        <PropertyName>hostnames</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Country_Name</Label>
+                        <PropertyName>country_name</PropertyName>
+                    </ListItem>
+
+                    <ListItem>
+                        <Label>city</Label>
+                        <PropertyName>hostnames</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Country_Code</Label>
+                        <PropertyName>country_code</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Postal_Code</Label>
+                        <PropertyName>postal_code</PropertyName>
+                    </ListItem>
+                    <ListItem>
+                        <Label>Area_Code</Label>
+                        <PropertyName>area_code</PropertyName>
+                    </ListItem>
+                    </ListItems>
+            </ListEntry>
+        </ListEntries>
+    </ListControl>
+</View>
+</ViewDefinitions>
+</Configuration>

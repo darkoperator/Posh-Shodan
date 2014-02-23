@@ -223,9 +223,9 @@ function Get-ShodanHostServices
         [string]$IPAddress,
 
         # All historical banners should be returned.
-        [Parameter(Mandatory=$true,
+        [Parameter(Mandatory=$false,
         ParameterSetName = "Proxy")]
-        [Parameter(Mandatory=$true,
+        [Parameter(Mandatory=$false,
         ParameterSetName = "Direct")]
         [switch]$History,
 
@@ -657,11 +657,32 @@ function Search-ShodanHost
         $ReturnedObject = Invoke-RestMethod @Params
         if ($ReturnedObject)
         {
-            $ReturnedObject.pstypenames.insert(0,'Shodan.Host.Search')
-            $ReturnedObject
+            if ($ReturnedObject.total -ne 0)
+            {
+                $matches = @()
+                foreach($match in $ReturnedObject.matches)
+                {
+                    $match.pstypenames.insert(0,'Shodan.Host.Match')
+                    $matches = $matches + $match
+                }
+
+                $properties = [ordered]@{
+                                'Total' = $ReturnedObject.total;
+                                'Matches' = $matches; 
+                                'Facets' = $ReturnedObject.facets
+                              }
+
+                $searchobj = [pscustomobject]$properties
+                $searchobj.pstypenames.insert(0,'Shodan.Host.Search')
+                $searchobj
+            }
+            else
+            {
+                Write-Warning "No matches found."
+            }
         }
     }
-    End
+    End 
     {
     }
 }
@@ -1004,7 +1025,7 @@ function Measure-ShodanHost
         $ReturnedObject = Invoke-RestMethod @Params
         if ($ReturnedObject)
         {
-            #$ReturnedObject.pstypenames.insert(0,'Shodan.Search.Count')
+            $ReturnedObject.pstypenames.insert(0,'Shodan.Host.Count')
             $ReturnedObject
         }
     }
@@ -1383,6 +1404,7 @@ function Search-ShodanExploit
         $ReturnedObject = Invoke-RestMethod @Params
         if ($ReturnedObject)
         {
+            $ReturnedObject.pstypenames.insert(0,'Shodan.Exploit.Search')
             $ReturnedObject
         }
     }
@@ -1489,6 +1511,7 @@ function Measure-ShodanExploit
         $ReturnedObject = Invoke-RestMethod @Params
         if ($ReturnedObject)
         {
+            $ReturnedObject.pstypenames.insert(0,'Shodan.Exploit.Count')
             $ReturnedObject
         }
     }
