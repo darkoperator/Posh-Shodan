@@ -1,31 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 <Configuration>
 <ViewDefinitions>
-<View>
-    <Name>Shodan.Host.Search</Name>
-    <ViewSelectedBy>
+    <View>
+      <Name>Exploit</Name>
+      <ViewSelectedBy>
         <TypeName>Shodan.Host.Search</TypeName>
-    </ViewSelectedBy>
-    <ListControl>
-        <ListEntries>
-            <ListEntry>
-                <ListItems>
-                    <ListItem> 
-                        <Label>Total</Label>
-                        <PropertyName>total</PropertyName>
-                    </ListItem>
-                    <ListItem>
-                        <Label>Matches</Label>
-                        <PropertyName>matches</PropertyName>
-                    </ListItem>
-                    <ListItem>
-                        <Label>Facets</Label>
-                        <PropertyName>facets</PropertyName>
-                    </ListItem>
-                    </ListItems>
-            </ListEntry>
-        </ListEntries>
-    </ListControl>
-</View>
-</ViewDefinitions>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Width>16</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Width>16</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+               <PropertyName>Total</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+               <PropertyName>Matches</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+               <PropertyName>Facets</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
 </Configuration>
