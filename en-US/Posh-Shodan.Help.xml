@@ -1357,7 +1357,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 	<command:details>
 		<command:name>Measure-ShodanExploit</command:name>
 		<maml:description>
-			<maml:para></maml:para>
+			<maml:para>Search across a variety of data sources for exploits and get summary information.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1368,7 +1368,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 	</command:details>
 	<maml:description>
 	<!--This is the Description section-->
-		<maml:para></maml:para>
+		<maml:para>Search across a variety of data sources for exploits and get summary information that can be greatly refined using facets.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1376,28 +1376,31 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>APIKey</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Shodan API key to use for query if one is not set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateThumbprint</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
+
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Facets</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>A comma-separated list of properties to get summary information on. </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Query</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Search query used to search the database of known exploits.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1407,49 +1410,61 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>APIKey</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Shodan API key to use for query if one is not set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateThumbprint</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
+
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Proxy</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Uses a proxy server for the request, rather than connecting directly to the Internet resource. Enter the URI of a network proxy server.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ProxyCredential</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.
+        
+Type a user name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or enter a PSCredential object, such as one generated by the Get-Credential cmdlet.
+        
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ProxyUseDefaultCredentials</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Uses the credentials of the current user to access the proxy server that is specified by the Proxy parameter.
+
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Facets</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>A comma-separated list of properties to get summary information on. </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Query</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Search query used to search the database of known exploits.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -1459,7 +1474,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>APIKey</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Shodan API key to use for query if one is not set.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1471,7 +1486,10 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>CertificateThumbprint</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
+
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1483,7 +1501,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Facets</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>A comma-separated list of properties to get summary information on. </maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
@@ -1495,7 +1513,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Query</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Search query used to search the database of known exploits.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1507,7 +1525,8 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Proxy</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Uses a proxy server for the request, rather than connecting directly to the Internet resource. Enter the URI of a network proxy server.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -1519,7 +1538,12 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ProxyCredential</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.
+        
+Type a user name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or enter a PSCredential object, such as one generated by the Get-Credential cmdlet.
+        
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			<dev:type>
@@ -1531,7 +1555,10 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ProxyUseDefaultCredentials</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Uses the credentials of the current user to access the proxy server that is specified by the Proxy parameter.
+
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2451,7 +2478,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 	<command:details>
 		<command:name>Search-ShodanExploit</command:name>
 		<maml:description>
-			<maml:para></maml:para>
+			<maml:para>Search across a variety of data sources for exploits. using Shodan</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -2462,7 +2489,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 	</command:details>
 	<maml:description>
 	<!--This is the Description section-->
-		<maml:para></maml:para>
+		<maml:para>Search across a variety of data sources for exploits and refine the search using facets.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -2470,28 +2497,31 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>APIKey</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Shodan API key to use for query if one is not set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateThumbprint</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
+
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Facets</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>A comma-separated list of properties to get summary information on. </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Query</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Search query used to search the database of known exploits.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2501,49 +2531,61 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>APIKey</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Shodan API key to use for query if one is not set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateThumbprint</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
+
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Proxy</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Uses a proxy server for the request, rather than connecting directly to the Internet resource. Enter the URI of a network proxy server.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ProxyCredential</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.
+        
+Type a user name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or enter a PSCredential object, such as one generated by the Get-Credential cmdlet.
+        
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ProxyUseDefaultCredentials</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Uses the credentials of the current user to access the proxy server that is specified by the Proxy parameter.
+
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Facets</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>A comma-separated list of properties to get summary information on. </maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Query</maml:name>
 				<maml:description>
-					<maml:para></maml:para>
+					<maml:para>Search query used to search the database of known exploits.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2553,7 +2595,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>APIKey</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Shodan API key to use for query if one is not set.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2565,7 +2607,10 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>CertificateThumbprint</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
+
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2577,7 +2622,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Facets</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>A comma-separated list of properties to get summary information on. </maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
@@ -2589,7 +2634,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Query</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Search query used to search the database of known exploits.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2601,7 +2646,8 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Proxy</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Uses a proxy server for the request, rather than connecting directly to the Internet resource. Enter the URI of a network proxy server.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2613,7 +2659,12 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ProxyCredential</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Specifies a user account that has permission to use the proxy server that is specified by the Proxy parameter. The default is the current user.
+        
+Type a user name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or enter a PSCredential object, such as one generated by the Get-Credential cmdlet.
+        
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			<dev:type>
@@ -2625,7 +2676,10 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ProxyUseDefaultCredentials</maml:name>
 			<maml:description>
-				<maml:para></maml:para>
+				<maml:para>Uses the credentials of the current user to access the proxy server that is specified by the Proxy parameter.
+
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -2711,8 +2765,7 @@ Accessing results past the 1st page using the &quot;page&quot; or &quot;offset/ 
 				<maml:description>
 					<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
 
-Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
-</maml:para>
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2775,8 +2828,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ISP</maml:name>
 				<maml:description>
-					<maml:para>Find devices based on the upstream owner of the IP netblock.
-</maml:para>
+					<maml:para>Find devices based on the upstream owner of the IP netblock.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2846,8 +2898,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Port</maml:name>
 				<maml:description>
-					<maml:para>Find devices based on the services/ ports that are publicly exposed on the Internet.
-</maml:para>
+					<maml:para>Find devices based on the services/ ports that are publicly exposed on the Internet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2868,8 +2919,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Page</maml:name>
 				<maml:description>
-					<maml:para>The page number to page through results 100 at a time. Overrides the &quot;offset&quot; and &quot;limit&quot; parameters if they were provided (default: 1)
-</maml:para>
+					<maml:para>The page number to page through results 100 at a time. Overrides the &quot;offset&quot; and &quot;limit&quot; parameters if they were provided (default: 1)</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
@@ -2916,8 +2966,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 				<maml:description>
 					<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
 
-Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
-</maml:para>
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2935,8 +2984,7 @@ Certificates are used in client certificate-based authentication. They can be ma
         
 Type a user name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or enter a PSCredential object, such as one generated by the Get-Credential cmdlet.
         
-This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
-</maml:para>
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
@@ -2945,8 +2993,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 				<maml:description>
 					<maml:para>Uses the credentials of the current user to access the proxy server that is specified by the Proxy parameter.
 
-This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
-</maml:para>
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -3009,8 +3056,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ISP</maml:name>
 				<maml:description>
-					<maml:para>Find devices based on the upstream owner of the IP netblock.
-</maml:para>
+					<maml:para>Find devices based on the upstream owner of the IP netblock.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3080,8 +3126,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Port</maml:name>
 				<maml:description>
-					<maml:para>Find devices based on the services/ ports that are publicly exposed on the Internet.
-</maml:para>
+					<maml:para>Find devices based on the services/ ports that are publicly exposed on the Internet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3102,8 +3147,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Page</maml:name>
 				<maml:description>
-					<maml:para>The page number to page through results 100 at a time. Overrides the &quot;offset&quot; and &quot;limit&quot; parameters if they were provided (default: 1)
-</maml:para>
+					<maml:para>The page number to page through results 100 at a time. Overrides the &quot;offset&quot; and &quot;limit&quot; parameters if they were provided (default: 1)</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
@@ -3155,8 +3199,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<maml:description>
 				<maml:para>Specifies the digital public key certificate (X509) of a user account that has permission to send the request. Enter the certificate thumbprint of the certificate.
 
-Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.
-</maml:para>
+Certificates are used in client certificate-based authentication. They can be mapped only to local user accounts; they do not work with domain accounts. To get a certificate thumbprint, use the Get-Item or Get-ChildItem command in the Windows PowerShell Cert: drive.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3264,8 +3307,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ISP</maml:name>
 			<maml:description>
-				<maml:para>Find devices based on the upstream owner of the IP netblock.
-</maml:para>
+				<maml:para>Find devices based on the upstream owner of the IP netblock.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3385,8 +3427,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Port</maml:name>
 			<maml:description>
-				<maml:para>Find devices based on the services/ ports that are publicly exposed on the Internet.
-</maml:para>
+				<maml:para>Find devices based on the services/ ports that are publicly exposed on the Internet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3422,8 +3463,7 @@ Certificates are used in client certificate-based authentication. They can be ma
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Page</maml:name>
 			<maml:description>
-				<maml:para>The page number to page through results 100 at a time. Overrides the &quot;offset&quot; and &quot;limit&quot; parameters if they were provided (default: 1)
-</maml:para>
+				<maml:para>The page number to page through results 100 at a time. Overrides the &quot;offset&quot; and &quot;limit&quot; parameters if they were provided (default: 1)</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
@@ -3499,8 +3539,7 @@ Certificates are used in client certificate-based authentication. They can be ma
         
 Type a user name, such as &quot;User01&quot; or &quot;Domain01\User01&quot;, or enter a PSCredential object, such as one generated by the Get-Credential cmdlet.
         
-This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
-</maml:para>
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			<dev:type>
@@ -3514,8 +3553,7 @@ This parameter is valid only when the Proxy parameter is also used in the comman
 			<maml:description>
 				<maml:para>Uses the credentials of the current user to access the proxy server that is specified by the Proxy parameter.
 
-This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.
-</maml:para>
+This parameter is valid only when the Proxy parameter is also used in the command. You cannot use the ProxyCredential and ProxyUseDefaultCredentials parameters in the same command.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>

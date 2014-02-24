@@ -1336,7 +1336,13 @@ function Search-ShodanExploit
         ParameterSetName = "Proxy")]
         [Parameter(Mandatory=$false,
         ParameterSetName = "Direct")]
-        [string]$Query
+        [string]$Query,
+
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
+        [int]$Page
     )
 
     Begin
@@ -1355,6 +1361,11 @@ function Search-ShodanExploit
         if ($Facets)
         {
             $Body.Add('facets', ($Facets -join ","))
+        }
+
+        if ($Page)
+        {
+            $Body.Add('page', $Page)
         }
 
         # Start building parameters for REST Method invokation.
