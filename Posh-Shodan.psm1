@@ -1,4 +1,4 @@
-﻿
+﻿#  .ExternalHelp Posh-Shodan.Help.xml
 function Set-ShodanAPIKey
 {
     [CmdletBinding()]
@@ -19,21 +19,7 @@ function Set-ShodanAPIKey
     {}
 }
 
-<#
-.Synopsis
-   Get API Features for a given API Key
-.DESCRIPTION
-   Get API Features for a given API Key
-.EXAMPLE
-    Get-ShodanAPIInfo -APIKey $apikey
-
-
-    unlocked_left : 99
-    telnet        : True
-    plan          : dev
-    https         : True
-    unlocked      : True
-#>
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanAPIInfo
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -118,7 +104,7 @@ function Get-ShodanAPIInfo
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanServices
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -203,7 +189,7 @@ function Get-ShodanServices
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanHostServices
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -308,7 +294,7 @@ function Get-ShodanHostServices
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Search-ShodanHost
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -687,7 +673,7 @@ function Search-ShodanHost
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Measure-ShodanHost
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -1034,7 +1020,7 @@ function Measure-ShodanHost
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanDNSResolve
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -1128,7 +1114,7 @@ function Get-ShodanDNSResolve
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanDNSReverse
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -1222,7 +1208,7 @@ function Get-ShodanDNSReverse
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanMyIP
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -1306,7 +1292,7 @@ function Get-ShodanMyIP
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Search-ShodanExploit
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]
@@ -1413,7 +1399,7 @@ function Search-ShodanExploit
     }
 }
 
-
+#  .ExternalHelp Posh-Shodan.Help.xml
 function Measure-ShodanExploit
 {
     [CmdletBinding(DefaultParameterSetName = 'Direct')]

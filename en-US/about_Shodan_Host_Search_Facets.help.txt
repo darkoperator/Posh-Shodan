@@ -1,0 +1,79 @@
+﻿TOPIC
+    about_Shodan_Host_Search_Facets
+
+SHORT DESCRIPTION
+    Describes the search facets that can be used when performing a search for
+    information of hosts using shodan.
+
+LONG DESCRIPTION
+    Describes the search facets that can be used when performing a search for
+    information of hosts using shodan. Best approach is to use facets in
+    conjunction with filters with the Measure-ShodanHost command so as to not
+    consume any credit and narrow the search to only the information desired.
+
+FILTERS
+
+    For Search-ShodanHost and Measure-ShodanHost Facet names can be in the format
+    of "property:count", where "count" is the number of facets that will be 
+    returned for a property (i.e. "country:100" to get the top 100 countries for
+    a search query). The following facets are currently supported:
+
+    - asn: Autonomous system number.
+    
+    - city: Name of the city where the device is located.
+    
+    - country: 2-letter country code where the device is located.
+    
+    - device: The type of device (webcam, router, etc.).
+    
+    - domain: The primary domain for the hostname of the device; i.e. the 
+      hostname without any subdomains.
+    
+    - geocluster: Group devices based on their latitude/ longitude into 
+      geographic regions/ clusters.
+    
+    - isp: The ISP that is providing the organization with the IP space for
+      this device.
+    
+    - link: The network link type. Possible values are: "Ethernet or modem",
+      "generic tunnel or VPN", "DSL", "IPIP or SIT", "SLIP", "IPSec or GRE",
+      "VLAN", "jumbo Ethernet", "Google", "GIF", "PPTP", "loopback", "AX.25 
+      radio modem".
+    
+    - ntp.ip: The IPs that were returned from running the NTP monlist command.
+    
+    - ntp.ip_count: The number of IPs that were returned by the NTP monlist
+      command; values can range from 0 to 6.
+    
+    - ntp.more: Boolean value indicating whether or not there were more than 6
+      IPs available from the server.
+    
+    - ntp.port: The port numbers that the IPs in the monlist command used to 
+      interact with the NTP server.
+    
+    - org: The name of the organization that is assigned the IP space for this
+      device.
+    
+    - os: The operating system that powers the device.
+    
+    - port: The port number that the service is operating on.
+    
+    - timestamp_day: Provide a breakdown of when the banners were last updated,
+      broken down by days.
+    
+    - timestamp_month: Provide a breakdown of when the banners were last updated,
+      broken down by months.
+    
+    - timestamp_year: Provide a breakdown of when the banners were last updated,
+      broken down by years.
+    
+    - uptime: Returns a histogram of values showing the number of minutes that the
+      devices have been online.
+    
+    - version: The version of the product that generated the banner.
+
+SEE ALSO
+
+    "Shodan API Documentation" (https://developer.shodan.io/api)
+    Measure-ShodanHost
+    Search-ShodanHost
