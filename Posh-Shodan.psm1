@@ -55,7 +55,7 @@ function Get-ShodanAPIInfo
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -140,7 +140,7 @@ function Get-ShodanServices
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -238,7 +238,7 @@ function Get-ShodanHostServices
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -529,7 +529,7 @@ function Search-ShodanHost
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -908,7 +908,7 @@ function Measure-ShodanHost
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1063,7 +1063,7 @@ function Get-ShodanDNSResolve
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1157,7 +1157,7 @@ function Get-ShodanDNSReverse
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1244,7 +1244,7 @@ function Get-ShodanMyIP
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1349,7 +1349,7 @@ function Search-ShodanExploit
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1461,7 +1461,7 @@ function Measure-ShodanExploit
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No VirusTotal API Key has been specified or set."
+            throw "No Shodan API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
