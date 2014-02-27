@@ -22,23 +22,32 @@ function Set-ShodanAPIKey
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanAPIInfo
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials
     )
 
@@ -46,7 +55,7 @@ function Get-ShodanAPIInfo
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -96,25 +105,34 @@ function Get-ShodanAPIInfo
 }
 
 #  .ExternalHelp Posh-Shodan.Help.xml
-function Get-ShodanService
+function Get-ShodanServices
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials
     )
 
@@ -122,7 +140,7 @@ function Get-ShodanService
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -172,33 +190,47 @@ function Get-ShodanService
 }
 
 #  .ExternalHelp Posh-Shodan.Help.xml
-function Get-ShodanHostService
+function Get-ShodanHostServices
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Direct")]
         [string]$IPAddress,
 
         # All historical banners should be returned.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [switch]$History,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials
     )
 
@@ -206,7 +238,7 @@ function Get-ShodanHostService
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -265,143 +297,230 @@ function Get-ShodanHostService
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Search-ShodanHost
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
        # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials,
 
          # Text to query for.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Query = '',
 
         #  Find devices located in the given city. It's best combined with the
         # 'Country' filter to make sure you get the city in the country you 
         # want (city names are not always unique).
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$City,
 
         # Narrow results down by country.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Country,
 
         # Latitude and longitude.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Geo,
 
         # Search for hosts that contain the value in their hostname.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Hostname,
         
         # Limit the search results to a specific IP or subnet. It uses CIDR 
         # notation to designate the subnet range.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Net,
 
         # Specific operating systems. Common possible values are: windows,
         # linux and cisco.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$OS,
 
         # Search the HTML of the website for the given value.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$HTML,
 
         # Find devices based on the upstream owner of the IP netblock.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$ISP,
 
         # The network link type. Possible values are: "Ethernet or modem", 
         # "generic tunnel or VPN", "DSL", "IPIP or SIT", "SLIP", "IPSec or
         # "GRE", "VLAN", "jumbo Ethernet", "Google", "GIF", "PPTP", "loopback",
         # "AX.25 radio modem".
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [ValidateSet( "Ethernet or modem", "generic tunnel or VPN", "DSL", 
             "IPIP or SIT", "SLIP", "IPSec or GRE", "VLAN", "jumbo Ethernet",
             "Google", "GIF", "PPTP", "loopback", "AX.25 radio modem")]
         [string[]]$Link,
 
         #Find NTP servers that had the given IP in their monlist.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$NTP_IP,
 
         # Find NTP servers that return the given number of IPs in the initial monlist response.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$NTP_IP_Count,
 
         # Find NTP servers that had IPs with the given port in their monlist.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$NTP_Port,
 
         # Whether or not more IPs were available for the given NTP server.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [switch]$NTP_More,
 
         # Find devices based on the owner of the IP netblock.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Org,
 
         # Filter using the name of the software/ product; ex: product:Apache
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Product,
 
         # Filter the results to include only products of the given version; ex: product:apache version:1.3.37
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Version,
 
         # Search the title of the website.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Title,
 
         # Port number  to narrow the search to specific services.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Port,
 
         # Limit search for data that was collected before the given date in
         # format day/month/year.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Before,
 
         # Limit search for data that was collected after the given date in
         # format day/month/year.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$After,
 
         # The page number to page through results 100 at a time. Overrides the
         # "offset" and "limit" parameters if they were provided (default: 1)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$Page,
 
         # The positon from which the search results should be returned (default: 0)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$Offset,
 
         # The number of results to be returned default(100)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$Limit,
 
         # True or False; whether or not to truncate some of the larger fields (default: True)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [bool]$Minify = $true,
 
         # A comma-separated list of properties to get summary information on. Property names 
         # can also be in the format of "property:count", where "count" is the number of facets
         # that will be returned for a property (i.e. "country:100" to get the top 100 countries
         # for a search query).
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Facets
 
     )
@@ -410,7 +529,7 @@ function Search-ShodanHost
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -557,143 +676,230 @@ function Search-ShodanHost
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Measure-ShodanHost
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
        # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials,
 
          # Text to query for.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Query = '',
 
         #  Find devices located in the given city. It's best combined with the
         # 'Country' filter to make sure you get the city in the country you 
         # want (city names are not always unique).
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$City,
 
         # Narrow results down by country.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Country,
 
         # Latitude and longitude.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Geo,
 
         # Search for hosts that contain the value in their hostname.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Hostname,
         
         # Limit the search results to a specific IP or subnet. It uses CIDR 
         # notation to designate the subnet range.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Net,
 
         # Specific operating systems. Common possible values are: windows,
         # linux and cisco.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$OS,
 
         # Search the HTML of the website for the given value.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$HTML,
 
         # Find devices based on the upstream owner of the IP netblock.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$ISP,
 
         # The network link type. Possible values are: "Ethernet or modem", 
         # "generic tunnel or VPN", "DSL", "IPIP or SIT", "SLIP", "IPSec or
         # "GRE", "VLAN", "jumbo Ethernet", "Google", "GIF", "PPTP", "loopback",
         # "AX.25 radio modem".
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [ValidateSet( "Ethernet or modem", "generic tunnel or VPN", "DSL", 
             "IPIP or SIT", "SLIP", "IPSec or GRE", "VLAN", "jumbo Ethernet",
             "Google", "GIF", "PPTP", "loopback", "AX.25 radio modem")]
         [string[]]$Link,
 
         #Find NTP servers that had the given IP in their monlist.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$NTP_IP,
 
         # Find NTP servers that return the given number of IPs in the initial monlist response.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$NTP_IP_Count,
 
         # Find NTP servers that had IPs with the given port in their monlist.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$NTP_Port,
 
         # Whether or not more IPs were available for the given NTP server.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [switch]$NTP_More,
 
         # Find devices based on the owner of the IP netblock.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Org,
 
         # Filter using the name of the software/ product; ex: product:Apache
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Product,
 
         # Filter the results to include only products of the given version; ex: product:apache version:1.3.37
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Version,
 
         # Search the title of the website.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Title,
 
         # Port number  to narrow the search to specific services.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Port,
 
         # Limit search for data that was collected before the given date in
         # format day/month/year.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Before,
 
         # Limit search for data that was collected after the given date in
         # format day/month/year.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$After,
 
         # The page number to page through results 100 at a time. Overrides the
         # "offset" and "limit" parameters if they were provided (default: 1)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$Page,
 
         # The positon from which the search results should be returned (default: 0)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$Offset,
 
         # The number of results to be returned default(100)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [int]$Limit,
 
         # True or False; whether or not to truncate some of the larger fields (default: True)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [bool]$Minify = $true,
 
         # A comma-separated list of properties to get summary information on. Property names 
         # can also be in the format of "property:count", where "count" is the number of facets
         # that will be returned for a property (i.e. "country:100" to get the top 100 countries
         # for a search query).
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Facets
 
     )
@@ -702,7 +908,7 @@ function Measure-ShodanHost
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -817,27 +1023,39 @@ function Measure-ShodanHost
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanDNSResolve
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
         # Comma-separated list of hostnames ro resolve."
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Direct")]
         [string[]]$Hostname,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials
     )
 
@@ -845,7 +1063,7 @@ function Get-ShodanDNSResolve
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -899,27 +1117,39 @@ function Get-ShodanDNSResolve
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanDNSReverse
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
         # List of IP Addresses to resolve
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Direct")]
         [string[]]$IPAddress,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials
     )
 
@@ -927,20 +1157,20 @@ function Get-ShodanDNSReverse
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
             $APIKey = $Global:ShodanAPIKey
         }
 
-        $Body = @{'key'= $APIKey; 'ips' = ($IPAddress -join ",")}
+        $Body = @{'key'= $APIKey; 'hostnames' = ($IPAddress -join ",")}
 
         # Start building parameters for REST Method invokation.
         $Params =  @{}
         $Params.add('Body', $Body)
         $Params.add('Method', 'Get')
-        $Params.add('Uri',[uri]"https://api.shodan.io/dns/reverse")
+        $Params.add('Uri',[uri]"https://api.shodan.io/dns/resolve")
 
         # Check if connection will be made thru a proxy.
         if ($PsCmdlet.ParameterSetName -eq "Proxy")
@@ -981,23 +1211,32 @@ function Get-ShodanDNSReverse
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Get-ShodanMyIP
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials
     )
 
@@ -1005,7 +1244,7 @@ function Get-ShodanMyIP
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1056,17 +1295,24 @@ function Get-ShodanMyIP
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Search-ShodanExploit
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$CertificateThumbprint,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
         [Parameter(Mandatory=$false,
@@ -1079,15 +1325,21 @@ function Search-ShodanExploit
 
         # list of properties to get summary information on.
         [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
         ParameterSetName = "Direct")]
         [ValidateSet('author', 'platform', 'port', 'source', 'type')]
         [string[]]$Facets,
 
         # Text to query for.
         [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
         ParameterSetName = "Direct")]
         [string]$Query,
 
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Parameter(Mandatory=$false,
         ParameterSetName = "Direct")]
         [int]$Page
@@ -1097,7 +1349,7 @@ function Search-ShodanExploit
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
@@ -1161,33 +1413,47 @@ function Search-ShodanExploit
 #  .ExternalHelp Posh-Shodan.Help.xml
 function Measure-ShodanExploit
 {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = 'Direct')]
     Param
     (
         # Shodan developer API key
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$APIKey,
-
-        [Parameter(Mandatory=$false)]
-        [string]$CertificateThumbprint,
 
         [Parameter(Mandatory=$false,
         ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
+        [string]$CertificateThumbprint,
+
+        [Parameter(Mandatory=$true,
+        ParameterSetName = "Proxy")]
         [string]$Proxy,
  
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Management.Automation.PSCredential]$ProxyCredential,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
         [Switch]$ProxyUseDefaultCredentials,
 
         # list of properties to get summary information on.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [ValidateSet('author', 'platform', 'port', 'source', 'type')]
         [string[]]$Facets,
 
         # Text to query for.
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Proxy")]
+        [Parameter(Mandatory=$false,
+        ParameterSetName = "Direct")]
         [string]$Query
     )
 
@@ -1195,7 +1461,7 @@ function Measure-ShodanExploit
     {
         if (!(Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
-            throw "No Shodan API Key has been specified or set."
+            throw "No VirusTotal API Key has been specified or set."
         }
         elseif ((Test-Path variable:Global:ShodanAPIKey ) -and !($APIKey))
         {
