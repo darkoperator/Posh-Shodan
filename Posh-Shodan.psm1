@@ -14,11 +14,6 @@ function Set-ShodanAPIKey
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=1)]
-        [ValidateScript({if ($_.Length -ge 8)
-                            {$true}
-                         else
-                            {throw "Password must be 8 or more charecters long"}
-                        })]
         [securestring]$MasterPassword
 
     )
@@ -31,10 +26,23 @@ function Set-ShodanAPIKey
         $Global:ShodanAPIKey = $APIKey
 
         $SecureKeyString = ConvertTo-SecureString -String $APIKey -AsPlainText -Force
-        $EncryptedString = $SecureKeyString | ConvertFrom-SecureString -SecureKey $MasterPassword
+        
+        # Generate a random secure Salt
+        $SaltBytes = New-Object byte[] 32
+        $RNG = New-Object System.Security.Cryptography.RNGCryptoServiceProvider
+        $RNG.GetBytes($SaltBytes)
+
+        $Credentials = New-Object System.Management.Automation.PSCredential -ArgumentList 'user', $MasterPassword
+
+        # Derive Key, IV and Salt from Key
+        $Rfc2898Deriver = New-Object System.Security.Cryptography.Rfc2898DeriveBytes -ArgumentList $Credentials.GetNetworkCredential().Password, $SaltBytes
+        $KeyBytes  = $Rfc2898Deriver.GetBytes(32)
+
+        $EncryptedString = $SecureKeyString | ConvertFrom-SecureString -key $KeyBytes
 
         $FolderName = 'Posh-Shodan'
         $ConfigName = 'api.key'
+        $saltname   = 'salt.rnd'
         
         if (!(Test-Path -Path "$($env:AppData)\$FolderName"))
         {
@@ -45,6 +53,7 @@ function Set-ShodanAPIKey
         
         Write-Verbose -Message "Saving the information to configuration file $("$($env:AppData)\$FolderName\$ConfigName")"
         "$($EncryptedString)"  | Set-Content  "$($env:AppData)\$FolderName\$ConfigName" -Force
+        Set-Content -Value $SaltBytes -Encoding Byte -Path "$($env:AppData)\$FolderName\$saltname" -Force
     }
     End
     {}
@@ -74,10 +83,18 @@ function Read-ShodanAPIKey
     }
     Process
     {
-         Write-Verbose -Message "Reading key from $($env:AppData)\Posh-Shodan\api.key."
+        Write-Verbose -Message "Reading key from $($env:AppData)\Posh-Shodan\api.key."
         $ConfigFileContent = Get-Content -Path "$($env:AppData)\Posh-Shodan\api.key"
         Write-Debug -Message "Secure string is $($ConfigFileContent)"
-        $SecString = ConvertTo-SecureString -SecureKey $MasterPassword $ConfigFileContent
+
+        $SaltBytes = Get-Content -Encoding Byte -Path "$($env:AppData)\Posh-Shodan\salt.rnd" 
+        $Credentials = New-Object System.Management.Automation.PSCredential -ArgumentList 'user', $MasterPassword
+
+        # Derive Key, IV and Salt from Key
+        $Rfc2898Deriver = New-Object System.Security.Cryptography.Rfc2898DeriveBytes -ArgumentList $Credentials.GetNetworkCredential().Password, $SaltBytes
+        $KeyBytes  = $Rfc2898Deriver.GetBytes(32)
+
+        $SecString = ConvertTo-SecureString -Key $KeyBytes $ConfigFileContent
 
         # Decrypt the secure string.
         $SecureStringToBSTR = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecString)
