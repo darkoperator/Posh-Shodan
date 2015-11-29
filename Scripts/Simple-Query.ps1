@@ -8,20 +8,30 @@
 # Description: Simple cmd queries and parsed responses, don't use any tokens on advanced searches
 #
 
+## Functions
+# Parse our results in a cleaner way
+function simple_parse_print($results)
+{
+  foreach ($result in $($results.matches | Select -First $Quantity))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domains: $($result.domains)"
+  echo "Location: $($result.location)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+}
+
 $Query = Read-Host -Prompt 'Your simple search query: '
 $Quantity = Read-Host -Prompt 'Amount of results to return: '
 
 # Make our simple query
 $results = Search-ShodanHost -page 1 -Query "$(echo $Query)"
 
-# Parse our results
+# Dump our results
 #$results.matches | Select -First $($Quantity)
 
-foreach ($result in $($results.matches | Select -First $Quantity))
-{
-echo "IP: $($result.ip_str)"
-echo "Port: $($result.port)"
-echo "Domains: $($result.domains)"
-echo "Location: $($result.location)"
-echo "Data: $($result.data)"
-}
+# Pretty print our results
+simple_parse_print $results
