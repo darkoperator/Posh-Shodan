@@ -185,6 +185,216 @@ function simple_airlink_search()
   
 }
 
+# Simple hfs file server search
+function simple_hfs_search()
+{
+  # Make Query for hfs file server endpoints
+  $results = Search-ShodanHost -page 1 -Query "hfs" 
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple Bluecoat / SGProxy search
+function simple_sgproxy_search()
+{
+  # Make Query for bluecoat sgproxy endpoints
+  $results = Search-ShodanHost -page 1 -Query "sgproxy" 
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple Netgear router search
+function simple_netgear_search()
+{
+  # Make Query for Netgear router endpoints
+  $results = Search-ShodanHost -page 1 -Query "netgear" 
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple Android Webcam Server search
+function simple_androidcam_search()
+{
+  # Make Query for Android Webcam Server endpoints
+  $results = Search-ShodanHost -page 1 -Query "Android Webcam Server" 
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple Anonymous login successful search, nets ftp and file shares
+function simple_anonymous_access_search()
+{
+  # Make Query for Anonymous login successful
+  $results = Search-ShodanHost -page 1 -Query "Anonymous login successful" 
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple vnc server search
+function simple_vnc_search()
+{
+  # Make Query for vnc server endpoints
+  $results = Search-ShodanHost -page 1 -Query -Port 5900
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple Bitcoin server search
+function simple_bitcoin_search()
+{
+  # Make Query for Bitcoin server endpoints
+  $results = Search-ShodanHost -page 1 -Query -Port 8333
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
 Write-Host 'Select a sample script! (Some cost tokens)'
 Write-Host '1) Message of the Day (Cost one token!)'
 Write-Host '2) Siemans SCADA Search'
@@ -192,6 +402,13 @@ Write-Host '3) Webmin Panel Search'
 Write-Host '4) VOIP / SIP Search'
 Write-Host '5) Belkin Netcam Search'
 Write-Host '6) Airlink Camera Web Server Search'
+Write-Host '7) Android Web Cam Server Search'
+Write-Host '8) HFS File Server Search'
+Write-Host '9) Bluecoat / SGProxy Search'
+Write-Host '10) Netgear Router Search'
+Write-Host '11) Anonymous Server Access Search'
+Write-Host '12) VNC Server Search (Cost one token!)'
+Write-Host '13) Bitcoin Server Search (Cost one token!)'
 $Query = Read-Host -Prompt 'Select a sample query: '
 
 switch($Query){
@@ -201,4 +418,11 @@ switch($Query){
 4{simple_sip_search}
 5{simple_netcam_search}
 6{simple_airlink_search}
+7{simple_androidcam_search}
+8{simple_hfs_search}
+9{simple_sgproxy_search}
+10{simple_netgear_search}
+11{simple_anonymous_access_search}
+12{simple_vnc_search}
+13{simple_bitcoin_search}
 }
