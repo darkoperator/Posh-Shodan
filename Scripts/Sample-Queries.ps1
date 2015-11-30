@@ -14,12 +14,11 @@
 # Message of the day function
 function message_of_the_day()
 {
+  # Query
   $results = Search-ShodanHost -page 1 -Port 17
-
-  # Save results to file
-  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
-  Write-Host 'Full result set saved to: .\sample-query-results.json'
   
+  # Selectively print our results
+  Write-Host 'Top ten results:'
   foreach ($result in $($results.matches | Select -First 10))
   {
   echo ""
@@ -29,6 +28,11 @@ function message_of_the_day()
   echo "Data: $($result.data)"
   echo ""
   }
+
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'  
+  
 }
 
 # Simple SCADA search
@@ -37,10 +41,7 @@ function simple_scada_search()
   # Make Query for Simatic
   $results = Search-ShodanHost -page 1 -Query "simatic"
   
-  # Save results to file
-  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
-  Write-Host 'Full result set saved to: .\sample-query-results.json'
-  
+  # Selectively print our results
   Write-Host 'Top ten results:'
   foreach ($result in $($results.matches | Select -First 10))
   {
@@ -57,6 +58,11 @@ function simple_scada_search()
   echo "Data: $($result.data)"
   echo ""
   }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
 }
 
 # Simple webmin search
@@ -65,10 +71,7 @@ function simple_webmin_search()
   # Make Query for webmin
   $results = Search-ShodanHost -page 1 -Query "webmin" # -Port 10000
   
-  # Save results to file
-  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
-  Write-Host 'Full result set saved to: .\sample-query-results.json'
-  
+  # Selectively print our results
   Write-Host 'Top ten results:'
   foreach ($result in $($results.matches | Select -First 10))
   {
@@ -85,6 +88,11 @@ function simple_webmin_search()
   echo "Data: $($result.data)"
   echo ""
   }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'  
+
 }
 
 # Simple SIP / VOIP search
@@ -93,10 +101,7 @@ function simple_sip_search()
   # Make Query for sip / voip endpoints
   $results = Search-ShodanHost -page 1 -Query "sip" # -Port 5060
   
-  # Save results to file
-  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
-  Write-Host 'Full result set saved to: .\sample-query-results.json'
-  
+  # Selectively print our results
   Write-Host 'Top ten results:'
   foreach ($result in $($results.matches | Select -First 10))
   {
@@ -113,13 +118,80 @@ function simple_sip_search()
   echo "Data: $($result.data)"
   echo ""
   }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
+}
+
+# Simple netcam / belkin webcam search
+function simple_netcam_search()
+{
+  # Make Query for netcam / belkin webcam endpoints
+  $results = Search-ShodanHost -page 1 -Query "netcam" # -Port 49153
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'  
+  
+}
+
+# Simple airlink / camera web server search
+function simple_airlink_search()
+{
+  # Make Query for airlink / camera web server endpoints
+  $results = Search-ShodanHost -page 1 -Query "Camera Web Server" # -Port 80,81,82,83,84
+  
+  # Selectively print our results
+  Write-Host 'Top ten results:'
+  foreach ($result in $($results.matches | Select -First 10))
+  {
+  echo ""
+  echo "IP: $($result.ip_str)"
+  echo "Port: $($result.port)"
+  echo "Domain: $($result.domains)" 	
+  echo "Organization: $($result.org)"
+  echo "Location $($result.location)"
+  echo "Time: $($result.timestamp)"
+  echo "Product $($result.product)"
+  echo "Protocol $($result.transport)"
+  echo "Shodan Method Used: $($result._shodan)"
+  echo "Data: $($result.data)"
+  echo ""
+  }
+  
+  # Save results to file
+  $results.matches | ConvertTo-Json > '.\sample-query-results.json'
+  Write-Host 'Full result set saved to: .\sample-query-results.json'
+  
 }
 
 Write-Host 'Select a sample script! (Some cost tokens)'
 Write-Host '1) Message of the Day (Cost one token!)'
 Write-Host '2) Siemans SCADA Search'
-Write-Host '3) Webmin panel Search'
+Write-Host '3) Webmin Panel Search'
 Write-Host '4) VOIP / SIP Search'
+Write-Host '5) Belkin Netcam Search'
+Write-Host '6) Airlink Camera Web Server Search'
 $Query = Read-Host -Prompt 'Select a sample query: '
 
 switch($Query){
@@ -127,4 +199,6 @@ switch($Query){
 2{simple_scada_search}
 3{simple_webmin_search}
 4{simple_sip_search}
+5{simple_netcam_search}
+6{simple_airlink_search}
 }
