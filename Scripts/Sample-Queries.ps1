@@ -10,8 +10,15 @@
 
 ## Functions
 # Parse our results in a cleaner way, prints top 10 results
-function Write-GeneralParse($results)
+function Write-GeneralParse
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results
+    )
+    
     Write-Host 'Top ten results:'
     foreach ($result in $($results.matches | Select -First 10))
     {
@@ -60,7 +67,7 @@ function Search-SimpleSCADA()
     $results = Search-ShodanHost -page 1 -Query "simatic"
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -74,7 +81,7 @@ function Search-SimpleWebmin()
     $results = Search-ShodanHost -page 1 -Query "webmin" # -Port 10000
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -88,7 +95,7 @@ function Search-SimpleSIP()
     $results = Search-ShodanHost -page 1 -Query "sip" # -Port 5060
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -102,7 +109,7 @@ function Search-SimpleNetcam()
     $results = Search-ShodanHost -page 1 -Query "netcam" # -Port 49153
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -116,7 +123,7 @@ function Search-SimpleAirlink()
     $results = Search-ShodanHost -page 1 -Query "Camera Web Server" # -Port 80,81,82,83,84
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -130,7 +137,7 @@ function Search-SimpleHFS()
     $results = Search-ShodanHost -page 1 -Query "hfs" 
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -144,7 +151,7 @@ function Search-SimpleProxySG()
     $results = Search-ShodanHost -page 1 -Query "proxysg" 
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -158,7 +165,7 @@ function Search-SimpleNetgear()
     $results = Search-ShodanHost -page 1 -Query "netgear" 
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -172,7 +179,7 @@ function Search-SimpleAndroidCam()
     $results = Search-ShodanHost -page 1 -Query "Android Webcam Server" 
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -186,7 +193,7 @@ function Search-SimpleAnonymousAccess()
     $results = Search-ShodanHost -page 1 -Query "Anonymous login successful" 
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -200,7 +207,7 @@ function Search-SimpleVNC()
     $results = Search-ShodanHost -page 1 -Port 5900
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
@@ -214,7 +221,7 @@ function Search-SimpleBitcoin()
     $results = Search-ShodanHost -page 1 -Port 8333
     
     # General Top 10 print our results
-    general_parse_print $results
+    Write-GeneralParse $results
     
     # Save results to file
     $results.matches | ConvertTo-Json > '.\sample-query-results.json'
