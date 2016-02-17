@@ -10,28 +10,28 @@
 
 ## Functions
 # Parse our results in a cleaner way
-function simple_parse_print($results)
+function Write-SimpleParse($results)
 {
-  foreach ($result in $($results.matches | Select -First $Quantity))
-  {
-  echo ""
-  echo "IP: $($result.ip_str)"
-  echo "Port: $($result.port)"
-  echo "Domains: $($result.domains)"
-  echo "Location: $($result.location)"
-  echo "Data: $($result.data)"
-  echo ""
-  }
+    foreach ($result in $($results.matches | Select -First $Quantity))
+    {
+        Write-Output ""
+        Write-Output "IP: $($result.ip_str)"
+        Write-Output "Port: $($result.port)"
+        Write-Output "Domains: $($result.domains)"
+        Write-Output "Location: $($result.location)"
+        Write-Output "Data: $($result.data)"
+        Write-Output ""
+    }
 }
 
 $Query = Read-Host -Prompt 'Your simple search query: '
 $Quantity = Read-Host -Prompt 'Amount of results to return: '
 
 # Make our simple query
-$results = Search-ShodanHost -page 1 -Query "$(echo $Query)"
+$results = Search-ShodanHost -page 1 -Query "$($Query)"
 
 # Dump our results
 #$results.matches | Select -First $($Quantity)
 
 # Pretty print our results
-simple_parse_print $results
+Write-SimpleParse $results
