@@ -12,40 +12,40 @@
 # Save output in different formats
 
 # Save Results as Json
-function save_json($results, $filename)
+function Output-JSON($results, $filename)
 {
-  $results.matches | ConvertTo-Json > "$(echo $filename).json"
-  Write-Host "Full result set saved to: $(echo $filename).json"
+    $results.matches | ConvertTo-Json > "$($filename).json"
+    Write-Host "Full result set saved to: $($filename).json"
 }
 
-function save_xml($results, $filename)
+function Output-XML($results, $filename)
 {
-  $results.matches | Export-Clixml "$(echo $filename).xml"
-  Write-Host "Full result set saved to: $(echo $filename).xml"
+    $results.matches | Export-Clixml "$($filename).xml"
+    Write-Host "Full result set saved to: $($filename).xml"
 }
 
-function save_csv($results, $filename)
+function Output-CSV($results, $filename)
 {
-  $results.matches | ConvertTo-Csv > "$(echo $filename).csv"
-  Write-Host "Full result set saved to: $(echo $filename).csv"
+    $results.matches | ConvertTo-Csv > "$($filename).csv"
+    Write-Host "Full result set saved to: $($filename).csv"
 }
 
-function save_text($results, $filename)
+function Output-Text($results, $filename)
 {
-  $results.matches > "$(echo $filename).txt"
-  Write-Host "Full result set saved to: $(echo $filename).txt"
+    $results.matches > "$($filename).txt"
+    Write-Host "Full result set saved to: $($filename).txt"
 }
 
-function save_html($results, $filename)
+function Output-HTML($results, $filename)
 {
-  $results.matches | ConvertTo-Html > "$(echo $filename).html"
-  Write-Host "Full result set saved to: $(echo $filename).html"
+    $results.matches | ConvertTo-Html > "$($filename).html"
+    Write-Host "Full result set saved to: $($filename).html"
 }
 
-function save_table($results, $filename)
+function Output-Table($results, $filename)
 {
-  $results.matches | Format-Table > "$(echo $filename).txt"
-  Write-Host "Full result set saved to: $(echo $filename).txt"
+    $results.matches | Format-Table > "$($filename).txt"
+    Write-Host "Full result set saved to: $($filename).txt"
 }
 
 $Query = Read-Host -Prompt 'Enter a simple query: '
@@ -60,14 +60,15 @@ Write-Host '6) Table'
 $Output = Read-Host -Prompt 'Your output selection: '
 
 # Make query
-$results = Search-ShodanHost -Query "$(echo $Query)"
+$results = Search-ShodanHost -Query "$($Query)"
 
 # Switch on way to save results
-switch($Output){
-1{save_json $results $filename}
-2{save_xml $results $filename}
-3{save_csv $results $filename}
-4{save_text $results $filename}
-5{save_html $results $filename}
-6{save_table $results $filename}
+switch($Output)
+{
+    1{Output-JSON $results $filename}
+    2{Output-XML $results $filename}
+    3{Output-CSV $results $filename}
+    4{Output-Text $results $filename}
+    5{Output-HTML $results $filename}
+    6{Output-Table $results $filename}
 }
