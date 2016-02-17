@@ -10,8 +10,15 @@
 
 ## Functions
 # Parse our results in a cleaner way
-function Write-SimpleParse($results)
+function Write-SimpleParse
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results
+    )
+    
     foreach ($result in $($results.matches | Select -First $Quantity))
     {
         Write-Output ""
