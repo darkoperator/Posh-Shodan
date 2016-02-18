@@ -12,38 +12,98 @@
 # Save output in different formats
 
 # Save Results as Json
-function Output-JSON($results, $filename)
+function Output-JSON
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results,
+        
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $filename
+    )
     $results.matches | ConvertTo-Json > "$($filename).json"
     Write-Host "Full result set saved to: $($filename).json"
 }
 
-function Output-XML($results, $filename)
+function Output-XML
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results,
+        
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $filename
+    )
     $results.matches | Export-Clixml "$($filename).xml"
     Write-Host "Full result set saved to: $($filename).xml"
 }
 
-function Output-CSV($results, $filename)
+function Output-CSV
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results,
+        
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $filename
+    )
     $results.matches | ConvertTo-Csv > "$($filename).csv"
     Write-Host "Full result set saved to: $($filename).csv"
 }
 
-function Output-Text($results, $filename)
+function Output-Text
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results,
+        
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $filename
+    )
     $results.matches > "$($filename).txt"
     Write-Host "Full result set saved to: $($filename).txt"
 }
 
-function Output-HTML($results, $filename)
+function Output-HTML
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results,
+        
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $filename
+    )
     $results.matches | ConvertTo-Html > "$($filename).html"
     Write-Host "Full result set saved to: $($filename).html"
 }
 
-function Output-Table($results, $filename)
+function Output-Table
 {
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        $results,
+        
+        [Parameter(Mandatory=$true, Position=1)]
+        [string]
+        $filename
+    )
     $results.matches | Format-Table > "$($filename).txt"
     Write-Host "Full result set saved to: $($filename).txt"
 }
